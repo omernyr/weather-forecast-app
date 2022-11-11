@@ -13,9 +13,9 @@ function App() {
     const [lat, lon] = searchData.value.split(' ');
 
     // Anlık hava verisi
-    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`)
+    const currentWeatherFetch = fetch(`${WEATHER_API_URL}/weather?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
     // Geçmiş 5 günlük 3 saatlik hava verisi
-    const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`)
+    const forecastFetch = fetch(`${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`)
 
     Promise.all([currentWeatherFetch, forecastFetch])
       .then(async (response) => {
@@ -28,15 +28,15 @@ function App() {
       })
       .catch((err) => console.log(err))
 
-      console.log("Current Weather", currentWeather);
-      console.log("Forecast", forecast);
 
   }
+  console.log("Current Weather", currentWeather);
+  console.log("Forecast", forecast);
 
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
-      <CurrentWeather />
+      {currentWeather && <CurrentWeather data={currentWeather} />}
     </div>
   );
 }
