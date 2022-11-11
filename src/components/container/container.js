@@ -1,7 +1,7 @@
-import Search from "../search/search";
 import CurrentWeather from '../current-weather/current-weather';
-import { WEATHER_API_KEY, WEATHER_API_URL } from "../../api";
+import Search from "../search/search";
 import Forecast from '../forecast/forecast';
+import { WEATHER_API_KEY, WEATHER_API_URL } from "../../api";
 import { useWeather } from "../../context/WeatherContext";
 
 function Container() {
@@ -27,7 +27,6 @@ function Container() {
 
             })
             .catch((err) => console.log(err))
-
     }
 
     return (
