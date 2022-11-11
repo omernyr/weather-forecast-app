@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { AsyncPaginate } from "react-select-async-paginate";
 import { GEO_API_URL, geoApiOptions } from "../../api";
+import { useWeather } from "../../context/WeatherContext";
 
 const Search = ({ onSearchChange }) => {
 
-    const [search, setSearch] = useState(null);
+    const { search, setSearch } = useWeather();
 
     const handleOnChange = (searchData) => {
         setSearch(searchData)
@@ -22,8 +22,6 @@ const Search = ({ onSearchChange }) => {
                             label: `${city.name} ${city.countryCode}`
                         }
                     })
-
-
                 }
             }
             )

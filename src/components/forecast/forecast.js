@@ -6,15 +6,16 @@ import {
     AccordionItemPanel
 } from 'react-accessible-accordion';
 import './forecast.css';
-
-const WEEK_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+import { useWeather } from "../../context/WeatherContext";
 
 const Forecast = ({ data }) => {
+
+    const { WEEK_DAYS } = useWeather();
 
     const dayInaWeek = new Date().getDay();
 
     const forecastDays = WEEK_DAYS.slice(dayInaWeek, WEEK_DAYS.length).concat(WEEK_DAYS.slice(0, dayInaWeek))
-    console.log(forecastDays);
+    
     return <>
         <label className='title'>
             Daily
